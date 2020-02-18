@@ -29,6 +29,13 @@ open class FileBrowser: UINavigationController {
         }
     }
     
+    /// File filter
+    open var filter: (Any) -> Any = constantly(true) {
+        didSet {
+            parser.filter = filter
+        }
+    }
+    
     /// Override default preview and actionsheet behaviour in favour of custom file handling.
     open var didSelectFile: ((FBFile) -> ())? {
         didSet {

@@ -33,6 +33,7 @@
 		349A12361C707E86005435C0 /* image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 349A122F1C707E86005435C0 /* image@2x.png */; };
 		349A12371C707E86005435C0 /* pdf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 349A12301C707E86005435C0 /* pdf@2x.png */; };
 		349A12381C707E86005435C0 /* zip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 349A12311C707E86005435C0 /* zip@2x.png */; };
+		E7797C6223FC811A00468926 /* constantly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7797C6123FC811A00468926 /* constantly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		349A122F1C707E86005435C0 /* image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image@2x.png"; sourceTree = "<group>"; };
 		349A12301C707E86005435C0 /* pdf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pdf@2x.png"; sourceTree = "<group>"; };
 		349A12311C707E86005435C0 /* zip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zip@2x.png"; sourceTree = "<group>"; };
+		E7797C6123FC811A00468926 /* constantly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constantly.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				343C44601C73CC3C00D874FB /* Preview */,
 				349A122A1C707E86005435C0 /* Resources */,
 				344169591C67812400B93D28 /* Info.plist */,
+				E7797C6123FC811A00468926 /* constantly.swift */,
 			);
 			path = FileBrowser;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 3441694A1C67812400B93D28;
@@ -322,6 +326,7 @@
 				343C447A1C73CFC400D874FB /* WebviewPreviewViewContoller.swift in Sources */,
 				3439AB701C6FF68C0058AF04 /* FileBrowser.swift in Sources */,
 				349A12261C707317005435C0 /* FileListTableView.swift in Sources */,
+				E7797C6223FC811A00468926 /* constantly.swift in Sources */,
 				343C44661C73CD3200D874FB /* PreviewManager.swift in Sources */,
 				3439AB681C6F203A0058AF04 /* FileParser.swift in Sources */,
 				349A12281C707B1A005435C0 /* FBFile.swift in Sources */,
