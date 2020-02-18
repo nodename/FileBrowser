@@ -91,7 +91,7 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
             let selectedFile = fileForIndexPath(indexPath)
             selectedFile.delete()
             
-            prepareData(filter)
+            prepareData()
             tableView.reloadSections([indexPath.section], with: UITableViewRowAnimation.automatic)
         }
     }

@@ -103,6 +103,7 @@
 		343C445E1C73CB9600D874FB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E7797C6123FC811A00468926 /* constantly.swift */,
 				3439AB671C6F203A0058AF04 /* FileParser.swift */,
 				349A12271C707B1A005435C0 /* FBFile.swift */,
 			);
@@ -159,7 +160,6 @@
 				343C44601C73CC3C00D874FB /* Preview */,
 				349A122A1C707E86005435C0 /* Resources */,
 				344169591C67812400B93D28 /* Info.plist */,
-				E7797C6123FC811A00468926 /* constantly.swift */,
 			);
 			path = FileBrowser;
 			sourceTree = "<group>";

@@ -18,7 +18,6 @@ class FileListViewController: UIViewController {
     var didSelectFile: ((FBFile) -> ())?
     var files = [FBFile]()
     var initialPath: URL?
-    var filter: (Any) -> Any = constantly(true)
     let parser = FileParser.sharedInstance
     let previewManager = PreviewManager()
     var sections: [[FBFile]] = []
@@ -37,19 +36,17 @@ class FileListViewController: UIViewController {
     
     //MARK: Lifecycle
     convenience init (initialPath: URL) {
-        self.init(initialPath: initialPath, showCancelButton: true, filter: constantly(true))
+        self.init(initialPath: initialPath, showCancelButton: true)
     }
     
-    convenience init (initialPath: URL, showCancelButton: Bool, filter: @escaping (Any) -> Any = constantly(true)) {
+    convenience init (initialPath: URL, showCancelButton: Bool) {
         self.init(nibName: "FileBrowser", bundle: Bundle(for: FileListViewController.self))
         self.edgesForExtendedLayout = UIRectEdge()
         
         // Set initial path
         self.initialPath = initialPath
         self.title = initialPath.lastPathComponent
-        
-        self.filter = filter
-        
+                
         // Set search controller delegates
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -70,10 +67,10 @@ class FileListViewController: UIViewController {
         }
     }
     
-    func prepareData(_ filter: (Any) -> Any) {
+    func prepareData() {
         // Prepare data
         if let initialPath = initialPath {
-            files = parser.filesForDirectory(initialPath, filter)
+            files = parser.filesForDirectory(initialPath)
             indexFiles()
         }
     }
@@ -82,7 +79,7 @@ class FileListViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        prepareData(filter)
+        prepareData()
         
         // Set search bar
         tableView.tableHeaderView = searchController.searchBar

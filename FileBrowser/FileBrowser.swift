@@ -30,7 +30,7 @@ open class FileBrowser: UINavigationController {
     }
     
     /// File filter
-    open var filter: (Any) -> Any = constantly(true) {
+    open var filter: (FBFile) -> Bool = constantly(true) {
         didSet {
             parser.filter = filter
         }

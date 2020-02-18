@@ -26,7 +26,7 @@ class FileParser {
         }
     }
     
-    var filter: (Any) -> Any = constantly(true)
+    var filter: (FBFile) -> Bool = constantly(true)
     
     var excludesFilepaths: [URL]?
     
@@ -36,7 +36,7 @@ class FileParser {
         return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
     }
         
-    func filesForDirectory(_ directoryPath: URL, _ filter: (Any) -> Any = constantly(true)) -> [FBFile]  {
+    func filesForDirectory(_ directoryPath: URL) -> [FBFile]  {
         var files = [FBFile]()
         var filePaths = [URL]()
         // Get contents
@@ -58,7 +58,7 @@ class FileParser {
                 files.append(file)
             }
         }
-        files = files.filter { $0.displayName.hasPrefix("img") }
+        files = files.filter(filter)
         // Sort
         files = files.sorted(){$0.displayName < $1.displayName}
         return files

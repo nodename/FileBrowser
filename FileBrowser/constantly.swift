@@ -8,8 +8,10 @@
 
 import Foundation
 
-func constantly(_ value: Any) -> (Any) -> Any {
-    let f: (Any) -> Any = {_ in
+// a function that returns true for any FBFile.
+// used as default filter
+func constantly(_ value: Bool) -> (FBFile) -> Bool {
+    let f: (FBFile) -> Bool = { _ in
         return value
     }
     return f
