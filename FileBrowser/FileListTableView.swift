@@ -30,7 +30,7 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
     func getThumbnail(for fbFile: FBFile) -> UIImage? {
         guard let src = CGImageSourceCreateWithURL(fbFile.filePath as CFURL, nil) else { return nil }
         let scale = UIScreen.main.scale
-        let w = 20
+        let w = 50
         let d = [
             kCGImageSourceShouldAllowFloat : true,
             kCGImageSourceCreateThumbnailWithTransform : true,
