@@ -29,7 +29,7 @@ open class FileBrowser: UINavigationController {
         }
     }
     
-    /// File filter
+    /// File filter. Must return true to include file
     open var filter: (FBFile) -> Bool = constantly(true) {
         didSet {
             parser.filter = filter

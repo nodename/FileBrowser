@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import QuickLook
 
 extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -26,6 +27,21 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
         return sections[section].count
     }
     
+    func getThumbnail(for fbFile: FBFile) -> UIImage? {
+        guard let src = CGImageSourceCreateWithURL(fbFile.filePath as CFURL, nil) else { return nil }
+        let scale = UIScreen.main.scale
+        let w = 20
+        let d = [
+            kCGImageSourceShouldAllowFloat : true,
+            kCGImageSourceCreateThumbnailWithTransform : true,
+            kCGImageSourceCreateThumbnailFromImageAlways : true,
+            kCGImageSourceThumbnailMaxPixelSize : w
+            ] as [CFString : Any]
+        guard let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary) else { return nil }
+        let im = UIImage(cgImage: imref, scale: scale, orientation: .up)
+        return im
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "FileCell"
         var cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
@@ -35,7 +51,16 @@ extension FileListViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectionStyle = .blue
         let selectedFile = fileForIndexPath(indexPath)
         cell.textLabel?.text = selectedFile.displayName
-        cell.imageView?.image = selectedFile.type.image()
+        if selectedFile.type == .JPG {
+            if let thumb = getThumbnail(for: selectedFile) {
+                cell.imageView?.image = thumb
+            } else {
+                cell.imageView?.image = selectedFile.type.image()
+            }
+        } else {
+            cell.imageView?.image = selectedFile.type.image()
+        }
+        
         return cell
     }
     
