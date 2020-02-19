@@ -30,7 +30,7 @@ open class FileBrowser: UINavigationController {
     }
     
     /// File filter. Must return true to include file
-    open var filter: (FBFile) -> Bool = constantly(true) {
+    open var filter: ((URL) -> Bool)? = nil {
         didSet {
             parser.filter = filter
         }

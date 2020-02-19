@@ -26,7 +26,7 @@ class FileParser {
         }
     }
     
-    var filter: (FBFile) -> Bool = constantly(true)
+    var filter: ((URL) -> Bool)? = nil
     
     var excludesFilepaths: [URL]?
     
@@ -51,14 +51,16 @@ class FileParser {
             if let excludesFileExtensions = excludesFileExtensions, let fileExtension = file.fileExtension, excludesFileExtensions.contains(fileExtension) {
                 continue
             }
-            if let excludesFilepaths = excludesFilepaths , excludesFilepaths.contains(file.filePath) {
+            if let excludesFilepaths = excludesFilepaths, excludesFilepaths.contains(file.filePath) {
+                continue
+            }
+            if let filter = filter, filter(filePath) == false {
                 continue
             }
             if file.displayName.isEmpty == false {
                 files.append(file)
             }
         }
-        files = files.filter(filter)
         // Sort
         files = files.sorted(){$0.displayName < $1.displayName}
         return files
