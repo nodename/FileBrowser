@@ -26,7 +26,7 @@ class FileParser {
         }
     }
     
-    var filter: ((URL) -> Bool)? = nil
+    var filter: ((String) -> Bool)? = nil
     
     var excludesFilepaths: [URL]?
     
@@ -54,7 +54,7 @@ class FileParser {
             if let excludesFilepaths = excludesFilepaths, excludesFilepaths.contains(file.filePath) {
                 continue
             }
-            if let filter = filter, filter(filePath) == false {
+            if let filter = filter, filter(file.displayName) == false {
                 continue
             }
             if file.displayName.isEmpty == false {
