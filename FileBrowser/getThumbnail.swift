@@ -13,10 +13,10 @@ func getThumbnail(for filePath: URL) -> UIImage? {
     let scale = UIScreen.main.scale
     let w = 75
     let d = [
-        kCGImageSourceShouldAllowFloat : true,
-        kCGImageSourceCreateThumbnailWithTransform : true,
-        kCGImageSourceCreateThumbnailFromImageAlways : true,
-        kCGImageSourceThumbnailMaxPixelSize : w
+        kCGImageSourceShouldAllowFloat: true,
+        kCGImageSourceCreateThumbnailWithTransform: true,
+        kCGImageSourceCreateThumbnailFromImageAlways: true,
+        kCGImageSourceThumbnailMaxPixelSize: w
         ] as [CFString : Any]
     guard let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary) else { return nil }
     let im = UIImage(cgImage: imref, scale: scale, orientation: .up)

@@ -16,6 +16,7 @@ class FileListViewController: UIViewController {
     
     /// Data
     var didSelectFile: ((FBFile) -> ())?
+    var previewFile: ((FBFile) -> UIViewController)?
     var files = [FBFile]()
     var initialPath: URL?
     let parser = FileParser.sharedInstance

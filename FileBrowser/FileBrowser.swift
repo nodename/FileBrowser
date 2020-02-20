@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// File browser containing navigation controller.
 open class FileBrowser: UINavigationController {
@@ -40,6 +41,12 @@ open class FileBrowser: UINavigationController {
     open var didSelectFile: ((FBFile) -> ())? {
         didSet {
             fileList?.didSelectFile = didSelectFile
+        }
+    }
+    
+    open var previewFile: ((FBFile) ->UIViewController)? {
+        didSet {
+            fileList?.previewFile = previewFile
         }
     }
 
