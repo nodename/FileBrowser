@@ -11,14 +11,13 @@ import Foundation
 func getThumbnail(for filePath: URL) -> UIImage? {
     guard let src = CGImageSourceCreateWithURL(filePath as CFURL, nil) else { return nil }
     let scale = UIScreen.main.scale
-    let w = 75
+    let w = 80
     let d = [
         kCGImageSourceShouldAllowFloat: true,
         kCGImageSourceCreateThumbnailWithTransform: true,
         kCGImageSourceCreateThumbnailFromImageAlways: true,
         kCGImageSourceThumbnailMaxPixelSize: w
         ] as [CFString : Any]
-    guard let imref = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary) else { return nil }
-    let im = UIImage(cgImage: imref, scale: scale, orientation: .up)
-    return im
+    guard let cgThumbnail = CGImageSourceCreateThumbnailAtIndex(src, 0, d as CFDictionary) else { return nil }
+    return UIImage(cgImage: cgThumbnail, scale: scale, orientation: .up)
 }
