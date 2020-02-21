@@ -3,7 +3,6 @@
 //  FileBrowser
 //
 //  Created by Alan Shaw on 2/19/20.
-//  Copyright © 2020 Roy Marmelstein. All rights reserved.
 //
 
 import Foundation
